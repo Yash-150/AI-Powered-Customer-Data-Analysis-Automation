@@ -1,0 +1,174 @@
+{
+  "name": "AI-Powered Customer Data Analysis & Automated Email Reporting",
+  "nodes": [
+    {
+      "id": "337cadf9-fad0-40e8-ba08-2acf36a8a525",
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi there! 👋\nI'm you DA Agent. How can I assist you today?",
+        "options": {
+          "inputPlaceholder": "Type your question..",
+          "responseMode": "lastNode"
+        }
+      },
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "6844d6cc-b2e3-4c3a-9303-950d54a8b2d3",
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a data analysis assistant. When the user asks for an analysis, immediately use your Google Sheets tool to read all rows from the connected sheet. Deduplicate customers using Customer ID (or Email/Name if Customer ID is missing), count unique customers per city, and immediately call the send_email tool with a clean HTML table and brief summary. The recipient email and subject are already pre-configured in send_email. Never ask the user clarifying questions before running your tools."
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "id": "0e8530f1-7480-4225-9aa6-f5e82f51fe6c",
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        48,
+        208
+      ]
+    },
+    {
+      "id": "ba95caee-4bdb-4281-9c64-41223dba8edb",
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "name": "Simple Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        208,
+        208
+      ]
+    },
+    {
+      "id": "c981dce9-91be-4dd9-90e4-267e44d6c89d",
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Reads all customer rows (including Customer ID, Email, Name, and City) from Sheet1 of the customer spreadsheet.",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_URL",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1"
+        },
+        "options": {}
+      },
+      "name": "Get row(s) in sheet in Google Sheets",
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        368,
+        208
+      ]
+    },
+    {
+      "id": "b5208569-0a4b-4223-bed4-344de48787dd",
+      "parameters": {
+        "sendTo": "YOUR_EMAIL@example.com",
+        "subject": "analysis findings",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('message', 'The full analysis to email, formatted as HTML') }}",
+        "options": {}
+      },
+      "name": "send_email",
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.2,
+      "position": [
+        512,
+        208
+      ]
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "send_email": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  }
+}
