@@ -9,7 +9,8 @@ A beginner-friendly, no-code project that uses an AI Agent in **n8n** to read cu
 
 **Main outcome:** from one chat message, the workflow reported **29 unique customers across 24 cities** in the sample dataset and emailed the result as a table.
 
-![Workflow overview](screenshots/01-workflow-overview.png)
+<img width="1123" height="547" alt="image" src="https://github.com/user-attachments/assets/3b3776bf-f389-4c91-a47f-87b2276363ea" />
+
 
 ---
 
@@ -92,11 +93,13 @@ Two components are attached to the AI Agent and support it throughout:
 
 ## Workflow Architecture
 
-![Workflow architecture diagram](documentation/workflow-architecture-diagram.png)
+<img width="1123" height="547" alt="image" src="https://github.com/user-attachments/assets/ed7021bf-3389-4f66-83a3-86b9a409a921" />
+
 
 The actual n8n canvas:
 
-![n8n workflow canvas](screenshots/04-successful-execution.png)
+<img width="1919" height="986" alt="3" src="https://github.com/user-attachments/assets/408b9a3f-573f-40f5-a462-78dc84bc4362" />
+
 
 ## Dataset Information
 
@@ -145,31 +148,36 @@ These figures come from the demonstrated workflow execution and the uploaded sam
 
 ### 1. Workflow Overview
 
-![Workflow overview](screenshots/01-workflow-overview.png)
+<img width="1123" height="547" alt="Screenshot 2026-11-21 182719" src="https://github.com/user-attachments/assets/a2c74e07-3b06-4ea1-ad00-136c46291d52" />
+
 
 The overall n8n workflow: the chat trigger, the AI Agent, and the connected OpenAI model, memory, Google Sheets tool and Gmail tool. The chat panel shows the request and the execution log.
 
 ### 2. Initial Chat Test
 
-![Initial chat test](screenshots/02-initial-chat-test.png)
+<img width="1919" height="985" alt="1" src="https://github.com/user-attachments/assets/a7474e9a-cd42-456b-8962-98cb17c7fe67" />
+
 
 The first test, a simple "hi". The agent replied and the run succeeded, which confirmed the chat trigger, model and memory worked before any tools were added.
 
 ### 3. AI Agent Analysis
 
-![AI agent analysis](screenshots/03-ai-agent-analysis.png)
+<img width="1919" height="937" alt="2" src="https://github.com/user-attachments/assets/3707dc3a-53da-4cf7-a336-390822a5ea01" />
+
 
 The data retrieval test. The OpenAI Chat Model output lists unique customers grouped by city, and the chat summary shows 24 distinct cities and 29 distinct customers.
 
 ### 4. Successful Execution
 
-![Successful execution](screenshots/04-successful-execution.png)
+<img width="1919" height="986" alt="3" src="https://github.com/user-attachments/assets/2e0aadb2-7cc6-4809-9939-b5d62ec4cb81" />
+
 
 The full workflow run for the request "analyze unique customers in every city and email me the analysis". Every node shows a green tick, and the execution log shows the Google Sheets tool followed by the Gmail `send_email` tool. The chat reply confirms the analysis was emailed.
 
 ### 5. Email Report
 
-![Email report](screenshots/05-email-report.png)
+<img width="1919" height="940" alt="4" src="https://github.com/user-attachments/assets/79ef8655-e11e-4fd5-88fb-abeda788a1eb" />
+
 
 The email received in Gmail with the subject "analysis findings". It contains a summary, the total unique customers (29), total cities (24) and a city-wise table.
 
@@ -259,15 +267,7 @@ Because the analysis is written by an AI model, wording and layout can differ sl
 | Sample dataset | [dataset/sales_data_sample.xlsx](dataset/sales_data_sample.xlsx) |
 | System prompt | [documentation/system-prompt.md](documentation/system-prompt.md) |
 
-## About the Creator
-
-**Yash Verma**
-BCA Graduate | Data Analytics | Business Intelligence | AI & No-Code Automation
-
-Interested in solving practical business problems using data analytics, AI tools and automation.
-
-- **LinkedIn:** _add your LinkedIn profile URL here_
-- **GitHub:** _add your GitHub profile URL here_
+- **LinkedIn:** https://www.linkedin.com/in/yash1510/
 
 ## License
 
