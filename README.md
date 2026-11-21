@@ -98,7 +98,8 @@ Two components are attached to the AI Agent and support it throughout:
 
 The actual n8n canvas:
 
-<img width="1919" height="986" alt="3" src="https://github.com/user-attachments/assets/408b9a3f-573f-40f5-a462-78dc84bc4362" />
+<img width="1919" height="986" alt="3" src="https://github.com/user-attachments/assets/ea543dc7-6a42-4cfe-9d3b-8e4d68196aa6" />
+
 
 
 ## Dataset Information
@@ -155,7 +156,8 @@ The overall n8n workflow: the chat trigger, the AI Agent, and the connected Open
 
 ### 2. Initial Chat Test
 
-<img width="1919" height="985" alt="1" src="https://github.com/user-attachments/assets/a7474e9a-cd42-456b-8962-98cb17c7fe67" />
+<img width="1919" height="985" alt="1" src="https://github.com/user-attachments/assets/091d39a2-1212-4ef7-bdbe-3503230e62f4" />
+
 
 
 The first test, a simple "hi". The agent replied and the run succeeded, which confirmed the chat trigger, model and memory worked before any tools were added.
@@ -169,19 +171,19 @@ The data retrieval test. The OpenAI Chat Model output lists unique customers gro
 
 ### 4. Successful Execution
 
-<img width="1919" height="986" alt="3" src="https://github.com/user-attachments/assets/2e0aadb2-7cc6-4809-9939-b5d62ec4cb81" />
+<img width="1919" height="986" alt="3" src="https://github.com/user-attachments/assets/3e0a93e4-b9fd-4574-bc2c-444cee24f1f2" />
 
 
 The full workflow run for the request "analyze unique customers in every city and email me the analysis". Every node shows a green tick, and the execution log shows the Google Sheets tool followed by the Gmail `send_email` tool. The chat reply confirms the analysis was emailed.
 
 ### 5. Email Report
 
-<img width="1919" height="940" alt="4" src="https://github.com/user-attachments/assets/79ef8655-e11e-4fd5-88fb-abeda788a1eb" />
+<img width="1919" height="940" alt="4" src="https://github.com/user-attachments/assets/a34c5269-7f1b-45f7-8667-25c2a75b61ac" />
 
 
 The email received in Gmail with the subject "analysis findings". It contains a summary, the total unique customers (29), total cities (24) and a city-wise table.
 
-> Screenshots were captured during testing. Personal identifiers such as the email address, browser address bar and spreadsheet link are covered with grey boxes.
+> Screenshots were captured during testing.
 
 ## How to Set Up the Project
 
